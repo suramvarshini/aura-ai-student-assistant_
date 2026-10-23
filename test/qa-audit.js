@@ -370,6 +370,23 @@ const runQAAudit = async () => {
     const emptyChat = await request('/api/ai/chat', 'POST', { message: '   ' });
     check(emptyChat.status === 400, 'Empty AI chat message rejected with 400 Bad Request');
 
+    // -------------------------------------------------------------
+    // SECTION 11: Real Server-Side Background Automation & Reminders
+    // -------------------------------------------------------------
+    console.log('\n[SECTION 11] Testing Persistent Server-Side Background Automation...');
+    const autoStatus = await request('/api/automation/status');
+    check(autoStatus.status === 200, 'Automation status endpoint /api/automation/status returns 200 OK');
+    check(autoStatus.data?.schedulerActive === true, 'Persistent cron scheduler is active');
+    check(autoStatus.data?.timezone === 'Asia/Kolkata', 'Scheduler timezone verified as Asia/Kolkata');
+    check(autoStatus.data?.totalJobsConfigured >= 3, 'All 3 background cron workers active (sync, scan, refresh)');
+
+    const autoSync = await request('/api/automation/trigger-sync', 'POST');
+    check(autoSync.status === 200, 'Manual immediate trigger /api/automation/trigger-sync returns 200 OK');
+
+    const remindersRes = await request('/api/automation/reminders');
+    check(remindersRes.status === 200, 'Reminders queue /api/automation/reminders returns 200 OK');
+    check(Array.isArray(remindersRes.data?.reminders), 'Reminders list returned as structured array');
+
     console.log('\n================================================================');
     console.log(`🏁 QA AUDIT COMPLETE: ${passed} PASSED, ${failed} FAILED`);
     console.log('================================================================\n');

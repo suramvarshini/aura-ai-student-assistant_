@@ -15,8 +15,10 @@ const classroomRoutes = require('./routes/classroomRoutes');
 const aiRoutes = require('./routes/aiRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const mcpRoutes = require('./routes/mcpRoutes');
+const automationRoutes = require('./routes/automationRoutes');
 const { isGoogleConfigured } = require('./config/googleAuth');
 const { isGeminiConfigured } = require('./services/geminiService');
+const { initScheduler } = require('./services/automationService');
 
 // Legacy routes preserved for backwards compatibility
 const itemRoutes = require('./routes/itemRoutes');
@@ -39,6 +41,7 @@ app.use('/api/classroom', classroomRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/mcp', mcpRoutes);
+app.use('/api/automation', automationRoutes);
 
 // Backwards-compatible routes
 app.use('/api/items', itemRoutes);
@@ -50,6 +53,8 @@ app.get('/api/health', (req, res) => {
     status: 'online',
     system: 'AI Student Assistant API',
     mcpServer: 'online',
+    backgroundScheduler: 'active',
+    timezone: process.env.TIMEZONE || 'Asia/Kolkata',
     googleClassroom: isGoogleConfigured() ? 'live_configured' : 'demo_ready',
     geminiAI: isGeminiConfigured() ? 'live_configured' : 'demo_ready',
     timestamp: new Date().toISOString()
@@ -79,6 +84,7 @@ const PORT = process.env.PORT || 5000;
 const startServer = async () => {
   console.log('[Server] Initializing AI Student Assistant System...');
   await connectDB();
+  initScheduler();
 
   app.listen(PORT, () => {
     console.log(`====================================================`);
