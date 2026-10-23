@@ -1,0 +1,39 @@
+{
+  "name": "ai-student-assistant",
+  "version": "1.0.0",
+  "description": "Aura - AI Student Companion with Google Classroom, Voice Assistant & Model Context Protocol (MCP)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test/suite.js"
+  },
+  "keywords": [
+    "ai-student-assistant",
+    "google-classroom",
+    "gemini",
+    "voice-assistant",
+    "model-context-protocol",
+    "mcp",
+    "study-planner"
+  ],
+  "author": "Antigravity Engineering",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^2.31.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.19.2",
+    "googleapis": "^188.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.1",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^2.4.5",
+    "pdfkit": "^0.20.2"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.2.0"
+  }
+}

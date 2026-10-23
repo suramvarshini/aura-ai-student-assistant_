@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Campus Verification Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="admin-dashboard.html" class="brand">
+        <div class="brand-icon" style="background: linear-gradient(135deg, #0d9488, #1e293b);">🛡️</div>
+        <div class="brand-text">
+          <h1>Admin Control Panel</h1>
+          <span>Campus Verification Console</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" target="_blank">🌐 View Public Portal</a></li>
+        <li><span style="font-size: 0.88rem; color: var(--text-muted);">Signed in as <strong id="admin-user-name" style="color: var(--primary-color);">Admin</strong></span></li>
+        <li><button id="admin-logout-btn" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.85rem;">Logout</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Dashboard Main Content -->
+  <main class="container" style="padding-top: 30px;">
+    
+    <div class="page-header">
+      <h2>🛡️ Administrator Dashboard</h2>
+      <p>Manage all lost & found item listings, review user ownership claims, and approve/reject verification requests.</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="admin-stats-grid">
+      <div class="admin-stat-card">
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Total Reported Items</div>
+        <div id="admin-stat-total" style="font-size: 1.8rem; font-weight: 800; color: var(--text-main);">0</div>
+      </div>
+      <div class="admin-stat-card">
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Active Listed Items</div>
+        <div id="admin-stat-active" style="font-size: 1.8rem; font-weight: 800; color: var(--primary-color);">0</div>
+      </div>
+      <div class="admin-stat-card">
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Pending Claim Requests</div>
+        <div id="admin-stat-pending-claims" style="font-size: 1.8rem; font-weight: 800; color: #d97706;">0</div>
+      </div>
+      <div class="admin-stat-card">
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Verified & Resolved</div>
+        <div id="admin-stat-verified-claims" style="font-size: 1.8rem; font-weight: 800; color: var(--claimed-color);">0</div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="admin-tabs">
+      <button class="tab-btn active" data-tab="items">📦 Manage Item Posts</button>
+      <button class="tab-btn" data-tab="claims">✋ Verification Claims Center</button>
+    </div>
+
+    <!-- Tab 1: Items Management Section -->
+    <section id="tab-items-section">
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Item Title</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-items-table-body">
+            <!-- Rendered by js/admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tab 2: Claims Verification Section -->
+    <section id="tab-claims-section" style="display: none;">
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Target Item</th>
+              <th>Claimant Contact</th>
+              <th>Ownership Proof Details</th>
+              <th>Claim Status</th>
+              <th>Submitted Date</th>
+              <th>Admin Action</th>
+            </tr>
+          </thead>
+          <tbody id="admin-claims-table-body">
+            <!-- Rendered by js/admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Campus Lost and Found System | Admin Control Panel</p>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

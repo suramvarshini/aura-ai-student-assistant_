@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal Login - Campus System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background-color: #0f172a; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+
+  <div style="width: 100%; max-width: 420px; padding: 20px;">
+    
+    <div style="text-align: center; margin-bottom: 25px; color: white;">
+      <div class="brand-icon" style="margin: 0 auto 15px auto; width: 55px; height: 55px; font-size: 28px;">🔐</div>
+      <h2 style="font-size: 1.8rem; font-weight: 800;">Admin Verification Portal</h2>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 5px;">Campus Lost and Found System</p>
+    </div>
+
+    <div class="form-card" style="margin: 0;">
+      <form id="admin-login-form">
+        
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label for="admin-email">Admin Email Address</label>
+          <input type="email" id="admin-email" class="form-control" placeholder="admin@campus.edu" value="admin@campus.edu" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 22px;">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" class="form-control" placeholder="••••••••" value="admin123" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 1rem;">
+          🔑 Secure Login
+        </button>
+
+      </form>
+
+      <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+        <p><strong>Default Academic Credentials:</strong></p>
+        <p>Email: <code>admin@campus.edu</code> | Pass: <code>admin123</code></p>
+        <p style="margin-top: 10px;"><a href="index.html" style="color: var(--primary-color);">← Back to Public Website</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

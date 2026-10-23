@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item Detail & Claim Request - Campus System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">🔍</div>
+        <div class="brand-text">
+          <h1>Campus Lost & Found</h1>
+          <span>Academic Web Portal</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Browse Items</a></li>
+        <li><a href="post-item.html">Report Lost/Found</a></li>
+        <li><a href="admin-login.html">Admin Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <main class="container" style="padding-top: 40px;">
+    
+    <div style="margin-bottom: 20px;">
+      <a href="index.html" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">← Back to Items List</a>
+    </div>
+
+    <!-- Dynamic Item Details -->
+    <div id="detail-container">
+      <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+        <p>🔄 Loading item details...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Claim Request Modal -->
+  <div id="claim-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 1.3rem; font-weight: 700;">✋ Submit Ownership Claim Request</h3>
+        <button id="close-claim-modal-btn" class="close-btn">&times;</button>
+      </div>
+
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">
+        To prevent fraudulent claims, please provide verifiable details and proof of ownership. The campus admin team will verify your claim.
+      </p>
+
+      <form id="claim-form" enctype="multipart/form-data">
+        <input type="hidden" id="claim-item-id" name="itemId">
+
+        <div class="form-group" style="margin-bottom: 15px;">
+          <label for="claimant-name">Your Full Name *</label>
+          <input type="text" id="claimant-name" name="claimantName" class="form-control" placeholder="e.g. John Doe" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+          <label for="claimant-email">Campus Email Address *</label>
+          <input type="email" id="claimant-email" name="claimantEmail" class="form-control" placeholder="e.g. john.doe@student.campus.edu" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+          <label for="claimant-phone">Phone Number *</label>
+          <input type="tel" id="claimant-phone" name="claimantPhone" class="form-control" placeholder="e.g. +1 555-0999" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+          <label for="proof-description">Detailed Proof of Ownership *</label>
+          <textarea id="proof-description" name="proofDescription" class="form-control" rows="4" placeholder="Describe unique features, serial numbers, wallpapers, invoice/receipt details, lock passwords, or specific contents inside..." required></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="proof-image">Attachment / Purchase Proof Photo (Optional)</label>
+          <input type="file" id="proof-image" name="proofImage" class="form-control" accept="image/*">
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('claim-modal').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-success">Submit Verification Claim</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Campus Lost and Found System | Web Technology Academic Project</p>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/detail.js"></script>
+</body>
+</html>

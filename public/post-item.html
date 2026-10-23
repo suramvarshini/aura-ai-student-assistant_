@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Lost or Found Item - Campus System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">🔍</div>
+        <div class="brand-text">
+          <h1>Campus Lost & Found</h1>
+          <span>Academic Web Portal</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Browse Items</a></li>
+        <li><a href="post-item.html" class="active">Report Lost/Found</a></li>
+        <li><a href="admin-login.html">Admin Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <main class="container" style="padding-top: 40px;">
+    
+    <div class="page-header" style="text-align: center; max-width: 700px; margin: 0 auto 30px auto;">
+      <h2>📢 Report a Lost or Found Item</h2>
+      <p>Fill in the item details below. Our automated classification engine will analyze your input to categorize and tag the item for optimal searching.</p>
+    </div>
+
+    <div class="form-card">
+      <form id="post-item-form" enctype="multipart/form-data">
+        
+        <div class="form-grid">
+          
+          <div class="form-group form-full">
+            <label for="item-title">Item Title / Name *</label>
+            <input type="text" id="item-title" name="title" class="form-control" placeholder="e.g. Apple MacBook Pro 14 inch, Blue SwissGear Backpack..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="item-type">Report Type *</label>
+            <select id="item-type" name="type" class="form-control" required>
+              <option value="lost">Lost Item (I lost an item)</option>
+              <option value="found">Found Item (I found an item)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="item-category">Category *</label>
+            <select id="item-category" name="category" class="form-control" required>
+              <option value="auto">✨ Auto-Detect (Smart Classifier)</option>
+              <option value="electronics">Electronics</option>
+              <option value="documents">Documents & IDs</option>
+              <option value="accessories">Accessories & Keys</option>
+              <option value="bags">Bags & Backpacks</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+
+          <!-- Real-Time Classification Feedback Box -->
+          <div class="form-full">
+            <div id="classification-box" class="classification-box" style="display: none;">
+              <span id="classification-text"><strong>💡 Classifier:</strong> Type item name to activate auto-tagging</span>
+            </div>
+          </div>
+
+          <div class="form-group form-full">
+            <label for="item-description">Detailed Description *</label>
+            <textarea id="item-description" name="description" class="form-control" rows="4" placeholder="Provide distinct characteristics, color, brand, contents, or unique identifiers..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="item-location">Location Found / Lost *</label>
+            <input type="text" id="item-location" name="location" class="form-control" placeholder="e.g. Central Library 2nd Floor, Cafeteria Table 4" required>
+          </div>
+
+          <div class="form-group">
+            <label for="item-date">Date Lost / Found *</label>
+            <input type="date" id="item-date" name="date" class="form-control" required>
+          </div>
+
+          <!-- Image Upload Field -->
+          <div class="form-group form-full">
+            <label for="item-image">Item Photo (Optional)</label>
+            <input type="file" id="item-image" name="image" class="form-control" accept="image/*">
+            <img id="image-preview" src="#" alt="Preview" class="image-preview">
+          </div>
+
+          <div class="form-full" style="border-top: 1px solid #e2e8f0; padding-top: 20px; margin-top: 10px;">
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 15px; color: var(--secondary-color);">Contact Information (For Verification)</h4>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-name">Your Full Name *</label>
+            <input type="text" id="contact-name" name="contactName" class="form-control" placeholder="e.g. Alex Rivera" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Campus Email Address *</label>
+            <input type="email" id="contact-email" name="contactEmail" class="form-control" placeholder="e.g. alex.rivera@student.campus.edu" required>
+          </div>
+
+          <div class="form-group form-full">
+            <label for="contact-phone">Phone Number (Optional)</label>
+            <input type="tel" id="contact-phone" name="contactPhone" class="form-control" placeholder="e.g. +1 555-0192">
+          </div>
+
+          <div class="form-full" style="margin-top: 15px;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">
+              🚀 Submit Item Report
+            </button>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Campus Lost and Found System | Web Technology Academic Project</p>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/post.js"></script>
+  <script>
+    // Set default date picker to today
+    document.getElementById('item-date').valueAsDate = new Date();
+  </script>
+</body>
+</html>
