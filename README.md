@@ -1,4 +1,4 @@
-# 🌸 Aura — AI Student Assistant & Voice Companion
+#  Aura — AI Student Assistant & Voice Companion
 
 A modern, production-oriented, full-stack AI student companion built for college students. Aura integrates with **Google Classroom**, **Google Gemini AI**, the **Model Context Protocol (MCP)**, and native browser **Web Speech APIs** to help students manage assignments, understand study materials, create optimized study plans, and revise through interactive flashcards and voice interactions.
 
