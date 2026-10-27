@@ -113,7 +113,7 @@ cp .env.example .env
 ```powershell
 node server.js
 ```
-Open **[http://localhost:5000](http://localhost:5000)** in your browser.
+ **[http://localhost:5000](http://localhost:5000)**
 
 ### 4. Run Automated Test Suite
 ```powershell
